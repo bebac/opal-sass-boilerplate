@@ -3,14 +3,14 @@ require 'erb'
 require 'bundler'
 Bundler.require
 
-OUT_DIR            = "public"
+OUT_DIR            = "../public"
 ASSET_DIR          = File.join(OUT_DIR, "assets")
 INDEX_HTML         = File.join(OUT_DIR, "index.html")
 APPLICATION_JS     = File.join(ASSET_DIR, "application.js")
 APPLICATION_MIN_JS = File.join(ASSET_DIR, "application.min.js")
 APPLICATION_CSS    = File.join(ASSET_DIR, "application.css")
 
-Opal.append_path "."
+Opal.append_path File.join(File.dirname(__FILE__), 'source')
 
 directory OUT_DIR
 directory ASSET_DIR
@@ -23,7 +23,7 @@ end
 
 desc "Build application.js"
 task :javascript => [ ASSET_DIR ] do
-  File.binwrite APPLICATION_JS, Opal::Builder.build("source/application").to_s
+  File.binwrite APPLICATION_JS, Opal::Builder.build("application").to_s
 end
 
 desc "Build css"
