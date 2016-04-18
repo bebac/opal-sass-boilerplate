@@ -36,3 +36,4 @@ task :minify => [ :javascript ] do
   File.binwrite APPLICATION_MIN_JS, Uglifier.compile(File.read(APPLICATION_JS))
 end
 
+task :default => [ :html, :javascript, :css ]
