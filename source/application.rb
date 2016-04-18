@@ -3,8 +3,8 @@ require 'browser'
 require 'browser/effects'
 require 'vienna'
 
-require_tree "templates"
-require_tree "source/views"
+require_tree 'templates'
+require_tree 'views'
 
 class Application
   def run
