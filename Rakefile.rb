@@ -17,7 +17,7 @@ directory ASSET_DIR
 
 desc "Build index.html"
 task :html => [ OUT_DIR ] do |t|
-  renderer = ERB.new(File.read("templates/index.html.erb"))
+  renderer = ERB.new(File.read("index.html.erb"))
   File.binwrite INDEX_HTML, renderer.result(binding)
 end
 
