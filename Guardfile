@@ -7,5 +7,5 @@ guard 'rake', :task => 'css' do
 end
 
 guard 'rake', :task => 'javascript' do
-  watch(%r{source/.+\.rb})
+  watch(%r{source/.+\.(rb|opalerb)})
 end
