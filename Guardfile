@@ -1,5 +1,5 @@
 guard 'rake', :task => 'html' do
-  watch('templates/index.html.erb')
+  watch('index.html.erb')
 end
 
 guard 'rake', :task => 'css' do
