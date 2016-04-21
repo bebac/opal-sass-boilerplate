@@ -1,22 +1,4 @@
 GIT
-  remote: git://github.com/bebac/vienna.git
-  revision: 605fcc5566f6e81f44a153aad4d1a5f0fa769f14
-  branch: opal-browser
-  specs:
-    opal-vienna (0.7.0)
-      opal (>= 0.5.0, < 1.0.0)
-      opal-activesupport
-      opal-browser
-
-GIT
-  remote: git://github.com/opal/opal-browser.git
-  revision: 5d3be6e8ea7ae584c9fdddc8ce961b2e2107131a
-  specs:
-    opal-browser (0.2.0)
-      opal
-      paggio
-
-GIT
   remote: git://github.com/opal/opal.git
   revision: c8529fee133c99872654f7e3b8ff9652adea45fc
   tag: v0.9.2
@@ -30,6 +12,11 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    bowser (0.1.6)
+      opal (>= 0.8.0, < 0.11.0)
+    clearwater (1.0.0.beta5)
+      bowser (~> 0.1.2)
+      opal (~> 0.7)
     coderay (1.1.1)
     concurrent-ruby (1.0.1)
     execjs (2.6.0)
@@ -58,9 +45,6 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    opal-activesupport (0.3.0)
-      opal (>= 0.5.0, < 1.0.0)
-    paggio (0.2.6)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -90,11 +74,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  clearwater (~> 1.0.0.beta3)
   guard
   guard-rake
   opal!
-  opal-browser!
-  opal-vienna!
   sass
   therubyracer
   uglifier

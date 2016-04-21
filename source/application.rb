@@ -1,29 +1,20 @@
 require 'opal'
-require 'browser'
-require 'browser/effects'
-require 'vienna'
+require 'clearwater'
+require 'bowser'
 
-require_tree 'templates'
-require_tree 'views'
+class Layout
+  include Clearwater::Component
 
-class Application
-  def run
-    router.update
-    puts "hello"
-  end
-
-  def router
-    @router ||= Vienna::Router.new.tap do |router|
-      #router.route('/')                    { |params| router.navigate('albums') }
-      #router.route('menu/:action(/:state)') { |params| @view.show_content(params) }
-    end
-  end
-
-  def find(selector)
-    $document.at(selector)
+  def render
+    h1('Hello, World')
   end
 end
 
-$document.ready do
-  Application.new.run
+#
+# Bowser doesn't have a document ready method. The DOMContentLoadad event
+# does the trick at least in chrome. Not sure if it is even needed?
+#
+Bowser.document.on :DOMContentLoaded do
+  app = Clearwater::Application.new(component: Layout.new)
+  app.call
 end
