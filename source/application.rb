@@ -1,22 +1,29 @@
 require 'opal'
 require 'browser'
+require 'browser/socket'
+require 'browser/location'
 require 'browser/effects'
-require 'vienna'
-
-require_tree 'templates'
-require_tree 'views'
+require 'json'
 
 class Application
   def run
-    router.update
-    puts "hello"
+    ws_url = "ws://#{$document.location.host}"
+    @channel = Browser::Socket.new ws_url do
+    #@channel = Browser::Socket.new "ws://#{$document.location.host}" do # Does not work!!!
+      on :open do
+      end
+
+      on :message do |e|
+        p "Received #{JSON.parse(e.data)}"
+      end
+    end
+    render
   end
 
-  def router
-    @router ||= Vienna::Router.new.tap do |router|
-      #router.route('/')                    { |params| router.navigate('albums') }
-      #router.route('menu/:action(/:state)') { |params| @view.show_content(params) }
-    end
+  def render
+    element = DOM { h1 }
+    element << "Hello, World"
+    find('body') << element
   end
 
   def find(selector)

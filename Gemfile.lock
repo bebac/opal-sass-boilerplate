@@ -1,14 +1,4 @@
 GIT
-  remote: git://github.com/bebac/vienna.git
-  revision: 605fcc5566f6e81f44a153aad4d1a5f0fa769f14
-  branch: opal-browser
-  specs:
-    opal-vienna (0.7.0)
-      opal (>= 0.5.0, < 1.0.0)
-      opal-activesupport
-      opal-browser
-
-GIT
   remote: git://github.com/opal/opal-browser.git
   revision: 5d3be6e8ea7ae584c9fdddc8ce961b2e2107131a
   specs:
@@ -58,8 +48,6 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    opal-activesupport (0.3.0)
-      opal (>= 0.5.0, < 1.0.0)
     paggio (0.2.6)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -94,7 +82,6 @@ DEPENDENCIES
   guard-rake
   opal!
   opal-browser!
-  opal-vienna!
   sass
   therubyracer
   uglifier
