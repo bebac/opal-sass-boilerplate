@@ -1,36 +1,26 @@
 require 'opal'
 require 'browser'
-require 'browser/socket'
-require 'browser/location'
-require 'browser/effects'
-require 'json'
+require 'browser/interval'
+require 'inesita'
 
-class Application
-  def run
-    ws_url = "ws://#{$document.location.host}"
-    @channel = Browser::Socket.new ws_url do
-    #@channel = Browser::Socket.new "ws://#{$document.location.host}" do # Does not work!!!
-      on :open do
-      end
+class Clock
+  include Inesita::Component
 
-      on :message do |e|
-        p "Received #{JSON.parse(e.data)}"
-      end
+  def initialize
+    @time = Time.now
+    every 1 do
+      @time = Time.now
+      render!
     end
-    render
   end
 
   def render
-    element = DOM { h1 }
-    element << "Hello, World"
-    find('body') << element
-  end
-
-  def find(selector)
-    $document.at(selector)
+    div class: 'clock' do
+      text @time.strftime('%r')
+    end
   end
 end
 
 $document.ready do
-  Application.new.run
+  Clock.new.mount_to($document.body)
 end
